@@ -1,9 +1,22 @@
 #!/usr/bin/env python3
-"""Type-annotated function type_checking that takes a variable x,
-    and returns the type of x"""
-from typing import Union, Tuple, List, Any
+'''
+type-annotated function
+'''
+from typing import List, Tuple
 
 
-def type_checking(x: Union[int, float, Tuple[int, int], List[int]]) -> Any:
-    """Return the type of x"""
-    return (x)
+def zoom_array(lst: Tuple, factor: int = 2) -> List:
+    '''Creates multiple copies of items in a tuple.
+    '''
+    zoomed_in: List = [
+        item for item in lst
+        for i in range(int(factor))
+    ]
+    return zoomed_in
+
+
+array = (12, 72, 91)
+
+zoom_2x = zoom_array(array)
+
+zoom_3x = zoom_array(array, 3)

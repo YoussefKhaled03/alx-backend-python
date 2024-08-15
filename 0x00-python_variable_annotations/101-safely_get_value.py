@@ -1,12 +1,18 @@
 #!/usr/bin/env python3
-"""Type-annotated function safely_get_value that takes
-    a dict and a key as arguments and returns the value of the key."""
-from typing import Union, Any, Mapping
+'''
+type-annotated function
+'''
+from typing import Any, Mapping, Union, TypeVar
 
 
-def safely_get_value(dct: Mapping, key: Any, default:
-                     Union[Any, None] = None) -> Union[Any, None]:
-    """Return the value of the key in the dictionary"""
+T = TypeVar('T')
+Res = Union[Any, T]
+Def = Union[T, None]
+
+
+def safely_get_value(dct: Mapping, key: Any, default: Def = None) -> Res:
+    '''Retrieves a value from a dict using a given key.
+    '''
     if key in dct:
         return dct[key]
     else:
